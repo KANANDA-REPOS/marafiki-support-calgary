@@ -1,12 +1,25 @@
-import React from 'react'
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-const PageNotAvailable = () => {
+const NotFound = () => {
+  const router = useRouter()
+
+  useEffect(() => {
+    setTimeout(() => {
+      // router.go(-1)
+      // router.go(1)
+      router.push('/')
+    }, 5000)
+  }, [])
+
   return (
-    <div>
-      <h1>OOOOOOOOps........</h1>
-      <h2>This Page Is Not Available</h2>
+    <div className="not-found">
+      <h1>Ooops...</h1>
+      <h2>That page cannot be found :(</h2>
+      <p>Going back to the <Link href="/"><a>Homepage</a></Link> is 5 seconds...</p>
     </div>
-  )
+  );
 }
-
-export default PageNotAvailable
+ 
+export default NotFound;
